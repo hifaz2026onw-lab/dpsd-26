@@ -1,0 +1,1503 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AXIOM — The Case for an Artificial President</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --void: #21635f;
+        --panel: #1c1510;
+        --panel-2: #241b13;
+        --gold: #d4af37;
+        --gold-bright: #f3d477;
+        --gold-deep: #a9822f;
+        --gold-line: rgba(212, 175, 55, 0.45);
+        --cream: #f4ead0;
+        --cream-dim: #d9c9a0;
+        --ink-text: #2c2314;
+        --ink-text-dim: #4a3d26;
+        --ink-gold: #6b5219;
+        --wine: #6a1626;
+        --wine-bright: #8f2038;
+        --green: #26312a;
+        --ink: #0a0705;
+
+        --f-display: "Cormorant Garamond", serif;
+        --f-script: "Cormorant Garamond", serif;
+        --f-body: "Cormorant Garamond", serif;
+
+        --wrap: 1180px;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: var(--void);
+        color: var(--cream);
+        font-family: var(--f-body);
+        font-size: 19px;
+        line-height: 1.65;
+        overflow-x: hidden;
+      }
+      ::selection {
+        background: var(--gold);
+        color: var(--ink);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      img,
+      svg {
+        display: block;
+        max-width: 100%;
+      }
+
+      .wrap {
+        max-width: var(--wrap);
+        margin: 0 auto;
+        padding: 0 40px;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: var(--f-display);
+        font-weight: 600;
+        color: var(--gold-bright);
+        letter-spacing: 0.02em;
+      }
+
+      .eyebrow {
+        font-family: var(--f-display);
+        font-size: 13.5px;
+        letter-spacing: 0.32em;
+        text-transform: uppercase;
+        color: var(--gold);
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+      .eyebrow::before {
+        content: "";
+        width: 26px;
+        height: 1px;
+        background: var(--gold);
+        display: inline-block;
+      }
+
+      /* focus visibility */
+      a:focus-visible,
+      button:focus-visible,
+      input:focus-visible {
+        outline: 2px solid var(--gold-bright);
+        outline-offset: 3px;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
+      }
+
+      /* ---------- reusable gold mosaic svg defs (hidden) ---------- */
+      #defs-holder {
+        position: absolute;
+        width: 0;
+        height: 0;
+        overflow: hidden;
+      }
+
+      /* ---------- nav ---------- */
+      header.nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        padding: 22px 0;
+        background: linear-gradient(
+          to bottom,
+          rgba(10, 7, 5, 0.92),
+          rgba(10, 7, 5, 0)
+        );
+        transition:
+          background 0.4s ease,
+          padding 0.4s ease;
+      }
+      header.nav.scrolled {
+        background: rgba(12, 9, 6, 0.92);
+        backdrop-filter: blur(6px);
+        padding: 14px 0;
+        border-bottom: 1px solid var(--gold-line);
+      }
+      .nav-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .brandmark {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-family: var(--f-display);
+        letter-spacing: 0.28em;
+        font-size: 16px;
+        color: var(--gold-bright);
+      }
+      .brandmark svg {
+        width: 26px;
+        height: 26px;
+      }
+      .nav-links {
+        display: flex;
+        gap: 38px;
+        list-style: none;
+      }
+      .nav-links a {
+        font-family: var(--f-display);
+        font-size: 13px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--cream-dim);
+        position: relative;
+        padding-bottom: 4px;
+      }
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        height: 1px;
+        background: var(--gold);
+        transition: width 0.35s ease;
+      }
+      .nav-links a:hover,
+      .nav-links a:hover::after {
+        color: var(--gold-bright);
+        width: 100%;
+      }
+      .nav-cta {
+        border: 1px solid var(--gold-deep);
+        color: var(--gold-bright);
+        font-family: var(--f-display);
+        font-size: 12.5px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        padding: 10px 20px;
+        transition: all 0.3s ease;
+      }
+      .nav-cta:hover {
+        background: var(--gold);
+        color: var(--ink);
+        border-color: var(--gold);
+      }
+      .nav-toggle {
+        display: none;
+        background: none;
+        border: none;
+        color: var(--gold-bright);
+        font-size: 26px;
+        cursor: pointer;
+      }
+
+      /* ---------- hero ---------- */
+      .hero {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        padding-top: 90px;
+        overflow: hidden;
+        background:
+          radial-gradient(
+            ellipse 70% 60% at 50% -10%,
+            rgba(138, 106, 32, 0.28),
+            transparent 60%
+          ),
+          linear-gradient(
+            180deg,
+            var(--ink) 0%,
+            var(--void) 60%,
+            var(--panel) 100%
+          );
+      }
+      .hero-mosaic-bg {
+        position: absolute;
+        inset: 0;
+        opacity: 0.16;
+        mix-blend-mode: screen;
+        pointer-events: none;
+      }
+      .hero-grid {
+        position: relative;
+        z-index: 2;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 40px;
+        align-items: center;
+        width: 100%;
+      }
+      .hero-copy .eyebrow {
+        margin-bottom: 22px;
+      }
+      .hero-copy h1 {
+        font-size: clamp(46px, 6.4vw, 84px);
+        line-height: 1.02;
+        margin-bottom: 22px;
+      }
+      .hero-copy h1 em {
+        font-family: var(--f-script);
+        font-style: italic;
+        font-weight: 500;
+        color: var(--cream);
+      }
+      .hero-copy p.lede {
+        font-family: var(--f-script);
+        font-size: 23px;
+        font-style: italic;
+        color: var(--cream-dim);
+        max-width: 460px;
+        margin-bottom: 34px;
+      }
+      .hero-actions {
+        display: flex;
+        gap: 18px;
+        flex-wrap: wrap;
+        margin-bottom: 46px;
+      }
+      .btn {
+        font-family: var(--f-display);
+        font-size: 13px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        padding: 16px 32px;
+        display: inline-block;
+        cursor: pointer;
+        border: 1px solid transparent;
+        transition: all 0.3s ease;
+      }
+      .btn-gold {
+        background: var(--gold);
+        color: var(--ink);
+      }
+      .btn-gold:hover {
+        background: var(--gold-bright);
+        transform: translateY(-2px);
+        box-shadow: 0 12px 26px -12px rgba(212, 175, 55, 0.55);
+      }
+      .btn-line {
+        border-color: var(--gold-deep);
+        color: var(--gold-bright);
+      }
+      .btn-line:hover {
+        border-color: var(--gold-bright);
+        background: rgba(212, 175, 55, 0.08);
+      }
+
+      .hero-meta {
+        display: flex;
+        gap: 38px;
+      }
+      .hero-meta div {
+        border-left: 1px solid var(--gold-line);
+        padding-left: 16px;
+      }
+      .hero-meta .num {
+        font-family: var(--f-display);
+        font-size: 22px;
+        color: var(--gold-bright);
+        display: block;
+      }
+      .hero-meta .lbl {
+        font-size: 12px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--cream-dim);
+      }
+
+      /* bottle — floats on the right side of the hero */
+      .hero-bottle {
+        position: absolute;
+        top: 50%;
+        right: -5%;
+        transform: translateY(-50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2;
+      }
+
+      .hero-bottle .bottle-glow {
+        position: absolute;
+        width: 340px;
+        height: 340px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(212, 175, 55, 0.35),
+          transparent 70%
+        );
+        filter: blur(10px);
+        animation: pulseGlow 6s ease-in-out infinite;
+      }
+
+      @keyframes pulseGlow {
+        0%,
+        100% {
+          opacity: 0.65;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+
+      .hero-bottle img {
+        position: relative;
+        z-index: 2;
+        width: min(700px, 60vw);
+        filter: drop-shadow(0 22px 34px rgba(0, 0, 0, 0.55));
+        animation: floatBottle 7s ease-in-out infinite;
+      }
+
+      @keyframes floatBottle {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-16px);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .hero-bottle img {
+          animation: none;
+        }
+      }
+
+      /* ---------- section shell ---------- */
+      section {
+        position: relative;
+        padding: 150px 0;
+      }
+      .divider {
+        height: 120px;
+        position: relative;
+        overflow: hidden;
+      }
+      .divider svg {
+        width: 100%;
+        height: 100%;
+      }
+
+      /* ---------- story ---------- */
+      .story {
+        background: var(--panel);
+      }
+      .story-grid {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 70px;
+        align-items: center;
+      }
+      .story-panel {
+        aspect-ratio: 4/5;
+        position: relative;
+        border: 1px solid var(--gold-line);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+      .story-panel svg {
+        width: 100%;
+        height: 100%;
+      }
+      .story h2 {
+        font-size: clamp(30px, 3.4vw, 44px);
+        margin-bottom: 24px;
+        line-height: 1.15;
+      }
+      .story p {
+        color: var(--cream-dim);
+        margin-bottom: 18px;
+        max-width: 520px;
+      }
+      .story blockquote {
+        font-family: var(--f-script);
+        font-style: italic;
+        font-size: 25px;
+        color: var(--gold-bright);
+        border-left: 2px solid var(--gold);
+        padding-left: 22px;
+        margin: 30px 0;
+        max-width: 480px;
+      }
+      .story blockquote cite {
+        display: block;
+        font-family: var(--f-body);
+        font-style: normal;
+        font-size: 14px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--cream-dim);
+        margin-top: 10px;
+      }
+
+      /* ---------- tasting notes ---------- */
+      .notes {
+        background: var(--void);
+        text-align: center;
+      }
+      .notes .eyebrow {
+        justify-content: center;
+        margin: 0 auto 20px;
+      }
+      .notes .eyebrow::before {
+        display: none;
+      }
+      .notes h2 {
+        font-size: clamp(30px, 3.4vw, 42px);
+        max-width: 640px;
+        margin: 0 auto 70px;
+      }
+      .notes-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 50px;
+      }
+      .note-card {
+        opacity: 0;
+        transform: translateY(28px);
+        transition:
+          opacity 0.8s ease,
+          transform 0.8s ease;
+      }
+      .note-card.in-view {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .note-card:nth-child(2) {
+        transition-delay: 0.15s;
+      }
+      .note-card:nth-child(3) {
+        transition-delay: 0.3s;
+      }
+      .medallion {
+        width: 104px;
+        height: 104px;
+        margin: 0 auto 26px;
+      }
+      .note-card h3 {
+        font-size: 16px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        margin-bottom: 14px;
+      }
+      .note-card p {
+        color: var(--cream-dim);
+        font-size: 17.5px;
+        max-width: 280px;
+        margin: 0 auto;
+      }
+
+      /* ---------- terroir ---------- */
+      .terroir {
+        background: var(--panel-2);
+      }
+      .terroir-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 70px;
+        align-items: start;
+      }
+      .terroir h2 {
+        font-size: clamp(30px, 3.4vw, 44px);
+        margin-bottom: 22px;
+      }
+      .terroir p {
+        color: var(--cream-dim);
+        margin-bottom: 30px;
+        max-width: 480px;
+      }
+      .fact-list {
+        list-style: none;
+        border-top: 1px solid var(--gold-line);
+      }
+      .fact-list li {
+        display: flex;
+        justify-content: space-between;
+        padding: 18px 0;
+        border-bottom: 1px solid var(--gold-line);
+        font-family: var(--f-display);
+        font-size: 14px;
+        letter-spacing: 0.06em;
+        gap: 24px;
+      }
+      .fact-list li span:first-child {
+        color: var(--cream-dim);
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        font-size: 12px;
+        white-space: nowrap;
+      }
+      .fact-list li span:last-child {
+        color: var(--gold-bright);
+        text-align: right;
+      }
+      .terroir-art {
+        aspect-ratio: 1/1;
+        position: relative;
+      }
+      .terroir-art svg {
+        width: 100%;
+        height: 100%;
+      }
+
+      /* ---------- editions gallery ---------- */
+      .editions {
+        background: var(--void);
+      }
+      .editions-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 30px;
+        margin-bottom: 60px;
+        flex-wrap: wrap;
+      }
+      .editions-head h2 {
+        font-size: clamp(30px, 3.4vw, 42px);
+        max-width: 520px;
+      }
+      .editions-head p {
+        color: var(--cream-dim);
+        max-width: 380px;
+      }
+      .edition-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
+      }
+      .edition-card {
+        border: 1px solid var(--gold-line);
+        padding: 0;
+        opacity: 0;
+        transform: translateY(24px);
+        transition:
+          opacity 0.7s ease,
+          transform 0.7s ease;
+      }
+      .edition-card.in-view {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .edition-card:nth-child(2) {
+        transition-delay: 0.12s;
+      }
+      .edition-card:nth-child(3) {
+        transition-delay: 0.24s;
+      }
+      .edition-swatch {
+        aspect-ratio: 1/1;
+        overflow: hidden;
+        border-bottom: 1px solid var(--gold-line);
+      }
+      .edition-swatch svg {
+        width: 100%;
+        height: 100%;
+        transition: transform 0.6s ease;
+      }
+      .edition-card:hover .edition-swatch svg {
+        transform: scale(1.08) rotate(1deg);
+      }
+      .edition-info {
+        padding: 22px 24px 26px;
+      }
+      .edition-info .num {
+        font-family: var(--f-display);
+        font-size: 12px;
+        color: var(--gold);
+        letter-spacing: 0.2em;
+      }
+      .edition-info h3 {
+        font-size: 20px;
+        margin: 8px 0 6px;
+        color: var(--gold-bright);
+        font-family: var(--f-script);
+        font-style: italic;
+        font-weight: 600;
+      }
+      .edition-info p {
+        font-size: 15.5px;
+        color: var(--cream-dim);
+      }
+
+      /* ---------- acquire ---------- */
+      .acquire {
+        background: linear-gradient(180deg, var(--panel-2), var(--ink));
+      }
+      .acquire-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 70px;
+        align-items: center;
+      }
+      .acquire h2 {
+        font-size: clamp(32px, 3.6vw, 48px);
+        margin-bottom: 20px;
+      }
+      .acquire p {
+        color: var(--cream-dim);
+        margin-bottom: 34px;
+        max-width: 460px;
+      }
+      .price-row {
+        display: flex;
+        align-items: baseline;
+        gap: 14px;
+        margin-bottom: 36px;
+      }
+      .price-row .price {
+        font-family: var(--f-display);
+        font-size: 38px;
+        color: var(--gold-bright);
+      }
+      .price-row .unit {
+        font-size: 15px;
+        color: var(--cream-dim);
+      }
+      .acquire-form {
+        display: flex;
+        gap: 0;
+        max-width: 440px;
+        border: 1px solid var(--gold-deep);
+      }
+      .acquire-form input {
+        flex: 1;
+        background: transparent;
+        border: none;
+        padding: 16px 18px;
+        color: var(--cream);
+        font-family: var(--f-body);
+        font-size: 16px;
+      }
+      .acquire-form input::placeholder {
+        color: var(--cream-dim);
+      }
+      .acquire-form input:focus {
+        outline: none;
+        background: rgba(212, 175, 55, 0.06);
+      }
+      .acquire-form button {
+        border: none;
+        background: var(--gold);
+        color: var(--ink);
+        padding: 0 26px;
+        font-family: var(--f-display);
+        font-size: 13px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+      .acquire-form button:hover {
+        background: var(--gold-bright);
+      }
+      .form-note {
+        font-size: 13.5px;
+        color: var(--cream-dim);
+        margin-top: 12px;
+      }
+      .acquire-visual {
+        aspect-ratio: 1/1.1;
+        position: relative;
+      }
+      .acquire-visual svg {
+        width: 100%;
+        height: 100%;
+      }
+
+      /* ---------- footer ---------- */
+      footer {
+        background: var(--ink);
+        padding: 70px 0 34px;
+        border-top: 1px solid var(--gold-line);
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr 1fr 1fr;
+        gap: 50px;
+        margin-bottom: 60px;
+      }
+      .footer-brand .brandmark {
+        margin-bottom: 16px;
+      }
+      .footer-brand p {
+        color: var(--cream-dim);
+        font-size: 15.5px;
+        max-width: 260px;
+      }
+      .footer-col h4 {
+        font-family: var(--f-display);
+        font-size: 12px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 18px;
+      }
+      .footer-col ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .footer-col a {
+        color: var(--cream-dim);
+        font-size: 15.5px;
+        transition: color 0.3s ease;
+      }
+      .footer-col a:hover {
+        color: var(--gold-bright);
+      }
+      .footer-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 28px;
+        border-top: 1px solid var(--gold-line);
+        font-size: 13.5px;
+        color: var(--cream-dim);
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      /* ---------- contrast fixes (backgrounds untouched, only foreground colors) ---------- */
+
+      /* .notes and .editions sit on --void, which renders as a medium-dark
+         teal, so they need the light cream/gold palette used everywhere
+         else on dark sections — not the dark ink tokens meant for a light
+         backdrop, which were unreadable against it. */
+      .notes,
+      .editions {
+        color: var(--cream-dim);
+      }
+      .notes .eyebrow,
+      .editions .eyebrow,
+      .edition-info .num {
+        color: var(--gold);
+      }
+      .notes .eyebrow::before,
+      .editions .eyebrow::before {
+        background: var(--gold);
+      }
+      .notes h2,
+      .notes h3,
+      .editions-head h2,
+      .edition-info h3 {
+        color: var(--gold-bright);
+      }
+      .note-card p,
+      .editions-head p,
+      .edition-info p {
+        color: var(--cream-dim);
+      }
+      .edition-info .num {
+        opacity: 0.9;
+      }
+
+      /* the hero background is a gradient between dark and light stops, and
+         the copy can land on either — a soft shadow plus a faint scrim
+         behind the text (not a change to the section's own background)
+         keeps it legible wherever the gradient lands. */
+      .hero-copy h1,
+      .hero-copy p.lede,
+      .hero-meta .num,
+      .hero-meta .lbl,
+      .eyebrow {
+        text-shadow: 0 2px 20px rgba(10, 7, 5, 0.6);
+      }
+      .hero-copy {
+        position: relative;
+        z-index: 1;
+      }
+      .hero-copy::before {
+        content: "";
+        position: absolute;
+        inset: -50px -70px;
+        background: radial-gradient(
+          ellipse at center,
+          rgba(10, 7, 5, 0.4),
+          rgba(10, 7, 5, 0) 72%
+        );
+        z-index: -1;
+        pointer-events: none;
+      }
+
+      /* borders and card edges were nearly invisible against dark panels;
+         make them read clearly without changing any panel's own color. */
+      .story-panel,
+      .terroir-art,
+      .edition-card {
+        box-shadow: 0 18px 40px -22px rgba(0, 0, 0, 0.6);
+      }
+      .edition-card {
+        background: rgba(212, 175, 55, 0.03);
+      }
+      .note-card,
+      .edition-card {
+        border-color: var(--gold-line);
+      }
+      .btn-line {
+        border-width: 1.5px;
+      }
+      .acquire-form {
+        border-color: var(--gold-deep);
+      }
+      .fact-list li span:first-child {
+        color: var(--cream-dim);
+      }
+
+      /* ---------- responsive ---------- */
+      @media (max-width: 960px) {
+        .wrap {
+          padding: 0 24px;
+        }
+        .nav-links,
+        .nav-cta {
+          display: none;
+        }
+        .nav-toggle {
+          display: block;
+        }
+        .hero-grid {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+        .hero-copy p.lede {
+          margin: 0 auto 34px;
+        }
+        .hero-actions,
+        .hero-meta {
+          justify-content: center;
+        }
+        .hero-bottle {
+          order: -1;
+          margin-bottom: 10px;
+        }
+        .hero-bottle {
+          display: none;
+        }
+        .story-grid,
+        .terroir-grid,
+        .acquire-grid {
+          grid-template-columns: 1fr;
+        }
+        .story-grid {
+          direction: ltr;
+        }
+        .notes-grid,
+        .edition-grid {
+          grid-template-columns: 1fr;
+        }
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        section {
+          padding: 100px 0;
+        }
+      }
+      @media (max-width: 520px) {
+        body {
+          font-size: 17px;
+        }
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+        .acquire-form {
+          flex-direction: column;
+        }
+        .acquire-form button {
+          padding: 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ============ shared SVG defs (gradients + tile patterns) ============ -->
+    <div id="defs-holder">
+      <svg xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#f3d477" />
+            <stop offset="45%" stop-color="#d4af37" />
+            <stop offset="100%" stop-color="#8a6a20" />
+          </linearGradient>
+          <radialGradient id="goldRadial" cx="50%" cy="45%" r="60%">
+            <stop offset="0%" stop-color="#f3d477" />
+            <stop offset="100%" stop-color="#8a6a20" />
+          </radialGradient>
+
+          <pattern
+            id="mosaicTile"
+            width="120"
+            height="120"
+            patternUnits="userSpaceOnUse"
+            patternTransform="rotate(8)"
+          >
+            <rect width="120" height="120" fill="none" />
+            <circle cx="20" cy="20" r="7" fill="#d4af37" opacity="0.9" />
+            <circle cx="20" cy="20" r="2.4" fill="#120d08" />
+            <polygon points="70,6 84,32 56,32" fill="#8a6a20" opacity="0.85" />
+            <polygon
+              points="100,60 116,90 84,90"
+              fill="#f3d477"
+              opacity="0.7"
+            />
+            <circle
+              cx="60"
+              cy="80"
+              r="10"
+              fill="none"
+              stroke="#d4af37"
+              stroke-width="2"
+              opacity="0.7"
+            />
+            <circle cx="60" cy="80" r="4" fill="#d4af37" />
+            <rect
+              x="0"
+              y="95"
+              width="16"
+              height="16"
+              fill="#6a1626"
+              opacity="0.6"
+              transform="rotate(45 8 103)"
+            />
+            <line
+              x1="0"
+              y1="0"
+              x2="120"
+              y2="120"
+              stroke="#d4af37"
+              stroke-width="0.4"
+              opacity="0.25"
+            />
+          </pattern>
+        </defs>
+      </svg>
+    </div>
+
+    <!-- ============ NAV ============ -->
+    <header class="nav" id="siteNav">
+      <div class="wrap nav-inner">
+        <a href="#top" class="brandmark">
+          <svg viewBox="0 0 40 40" fill="none">
+            <circle
+              cx="20"
+              cy="20"
+              r="18"
+              stroke="url(#goldGrad)"
+              stroke-width="1.4"
+            />
+            <circle cx="20" cy="20" r="4" fill="url(#goldRadial)" />
+            <path
+              d="M20 4 L20 12 M20 28 L20 36 M4 20 L12 20 M28 20 L36 20"
+              stroke="#d4af37"
+              stroke-width="1"
+            />
+          </svg>
+          Nexus
+        </a>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="#story">The Premise</a></li>
+            <li><a href="#notes">The Case For</a></li>
+            <li><a href="#terroir">The Risks</a></li>
+            <li><a href="#editions">The Models</a></li>
+          </ul>
+        </nav>
+        <a href="#debate" class="nav-cta">Join the Debate</a>
+        <button class="nav-toggle" aria-label="Menu">&#9776;</button>
+      </div>
+    </header>
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="top">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">A Thought turned Real</p>
+          <h1>Where your<br />vote turns<br /><em>to uncorruptability.</em></h1>
+          <p class="lede">
+            Could an algorithm govern more honestly than the people we keep
+            electing?<br />
+            The argument almost always comes down to one word: incorruptibility.
+          </p>
+          <div class="hero-actions">
+            <a href="#terroir" class="btn btn-line">Not convinced?</a>
+            <a href="#story" class="btn btn-line">Read the Premise</a>
+          </div>
+          <div class="hero-meta">
+            <div>
+              <span class="num">Zero</span
+              ><span class="lbl">Will to amass wealth</span>
+            </div>
+            <div>
+              <span class="num">24/7</span><span class="lbl">Mamdani core</span>
+            </div>
+            <div>
+              <span class="num">100%</span
+              ><span class="lbl">loyalty to the people</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-bottle">
+          <div class="bottle-glow"></div>
+          <img src="ab.png"/>
+        </div>
+      </div>
+    </section>
+
+    <!-- divider --> 
+    <div class="divider">
+      <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path
+          d="M0,60 C200,10 400,110 600,60 C800,10 1000,110 1200,60"
+          fill="none"
+          stroke="url(#goldGrad)"
+          stroke-width="1"
+        />
+        <circle cx="600" cy="60" r="5" fill="#d4af37" />
+      </svg>
+    </div>
+
+    <!-- ============ STORY ============ -->
+    <section class="story" id="story">
+      <div class="wrap story-grid">
+        <div class="story-panel">
+          <svg viewBox="0 0 400 500">
+            <rect width="400" height="500" fill="#1c1510" />
+            <rect
+              width="400"
+              height="500"
+              fill="url(#mosaicTile)"
+              opacity="0.5"
+            />
+            <rect
+              x="20"
+              y="20"
+              width="360"
+              height="460"
+              fill="none"
+              stroke="url(#goldGrad)"
+              stroke-width="1.5"
+            />
+            <circle
+              cx="200"
+              cy="250"
+              r="90"
+              fill="none"
+              stroke="#d4af37"
+              stroke-width="1.2"
+              opacity="0.8"
+            />
+            <circle
+              cx="200"
+              cy="250"
+              r="60"
+              fill="none"
+              stroke="#f3d477"
+              stroke-width="1"
+              opacity="0.6"
+            />
+            <circle cx="200" cy="250" r="14" fill="url(#goldRadial)" />
+          </svg>
+        </div>
+        <div>
+          <p class="eyebrow">The Premise</p>
+          <h2 style="margin-top: 20px">A leader with<br />nothing to gain.</h2>
+          <p>
+            The idea of an incorruptible leader shows up in different forms . An
+            AI president is one of them,<br />
+            a governing algorithm, a robotic head of state but the appeal is
+            always the same.<br />
+            Human leaders can be bought, blackmailed, or tempted to enrich
+            themselves and their friends. An algorithm with no bank account, no
+            family to favor, and no need for money has no will to sellout.
+          </p>
+
+          <blockquote>
+            "Corruption needs a person with something to lose. Remove the
+            person, the argument goes, and you remove the leverage."
+            <cite>— A proletariat</cite>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ THE CASE FOR ============ -->
+    <section class="notes" id="notes">
+      <div class="wrap">
+        <p class="eyebrow">The Case For</p>
+        <h2>Three arguments we lead with.</h2>
+        <div class="notes-grid">
+          <div class="note-card">
+            <svg class="medallion" viewBox="0 0 104 104">
+              
+              <circle
+                cx="52"
+                cy="52"
+                r="50"
+                fill="none"
+                stroke="url(#goldGrad)"
+                stroke-width="1.4"
+              />
+              <circle
+                cx="52"
+                cy="52"
+                r="34"
+                fill="none"
+                stroke="#d4af37"
+                stroke-width="1"
+                opacity="0.6"
+              />
+             
+            </svg>
+            <h3>Nothing to Bribe</h3>
+            <p>
+              No personal account to fill, no family business to favor, no
+              campaign debt to repay — supporters argue that removes most of the
+              usual leverage for bribery and graft.
+            </p>
+          </div>
+          <div class="note-card">
+            <svg class="medallion" viewBox="0 0 104 104">
+              <circle
+                cx="52"
+                cy="52"
+                r="50"
+                fill="none"
+                stroke="url(#goldGrad)"
+                stroke-width="1.4"
+              />
+              
+              />
+              <circle cx="52" cy="52" r="10" fill="url(#goldRadial)" />
+            </svg>
+            <h3>Rules Applied Evenly</h3>
+            <p>
+              A system with no in-group can't play favorites the way nepotism
+              and cronyism do — the same policy, proponents say, gets applied to
+              everyone the same way, every time.
+            </p>
+          </div>
+          <div class="note-card">
+            <svg class="medallion" viewBox="0 0 104 104">
+         <circle
+                cx="52"
+                cy="52"
+                r="50"
+                fill="none"
+                stroke="url(#goldGrad)"
+                stroke-width="1.4"
+              />
+              <circle
+                cx="52"
+                cy="52"
+                r="34"
+                fill="none"
+                stroke="#d4af37"
+                stroke-width="1"
+                opacity="0.6"
+              />
+             
+            </svg>
+            <h3>A Paper Trail for Everything</h3>
+            <p>
+              Every decision can, in principle, be logged and traced back to the
+              data behind it — a level of auditability human deal-making rarely
+              offers.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ THE RISKS ============ -->
+    <section class="terroir" id="terroir">
+      <div class="wrap terroir-grid">
+        <div class="terroir-art">
+          <svg viewBox="0 0 400 400">
+        
+            <path
+              d="M0,300 Q100,240 200,290 T400,270 V400 H0 Z"
+              fill="#0a0705"
+              opacity="0.7"
+            />
+            <path
+              d="M0,320 Q100,270 200,310 T400,300 V400 H0 Z"
+              fill="#120d08"
+            />
+          </svg>
+        </div>
+        <div>
+          <p class="eyebrow">The Risks</p>
+          <h2 style="margin-top: 20px">Where the<br />argument breaks down.</h2>
+          <p>
+            Critics don't dispute that a machine can't be bribed in the
+            traditional sense. They argue the corruption simply moves upstream —
+            to whoever builds, trains, and maintains the system — while raising
+            a separate set of problems entirely.
+          </p>
+          <ul class="fact-list">
+            <li>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ THE MODELS ============ -->
+    <section class="editions" id="editions">
+      <div class="wrap">
+        <div class="editions-head">
+          <h2>Three ways the idea actually gets proposed.</h2>
+          <p>
+            "Robot president" rarely means the same thing twice. Most serious
+            proposals fall into one of three tiers of authority.
+          </p>
+        </div>
+        <div class="edition-grid">
+          <div class="edition-card">
+            <div class="edition-swatch">
+              <svg viewBox="0 0 300 300">
+                <rect width="300" height="300" fill="#1c1510" />
+                <rect width="300" height="300" fill="url(#mosaicTile)" />
+                <circle
+                  cx="150"
+                  cy="150"
+                  r="70"
+                  fill="none"
+                  stroke="#f3d477"
+                  stroke-width="1.5"
+                />
+              </svg>
+            </div>
+            <div class="edition-info">
+              <span class="num">Model No. 01</span>
+              <h3>Advisor</h3>
+              <p>
+                The system analyzes and recommends; a human official still makes
+                and answers for every final call.
+              </p>
+            </div>
+          </div>
+          <div class="edition-card">
+            <div class="edition-swatch">
+              <svg viewBox="0 0 300 300">
+                <rect width="300" height="300" fill="#241b13" />
+                <rect
+                  width="300"
+                  height="300"
+                  fill="url(#mosaicTile)"
+                  patternTransform="rotate(-15)"
+                />
+                <polygon
+                  points="150,60 220,220 80,220"
+                  fill="none"
+                  stroke="#d4af37"
+                  stroke-width="1.5"
+                />
+              </svg>
+            </div>
+            <div class="edition-info">
+              <span class="num">Model No. 02</span>
+              <h3>Co-Signer</h3>
+              <p>
+                The system can flag or veto decisions it scores as
+                self-interested, while a human still holds the office.
+              </p>
+            </div>
+          </div>
+          <div class="edition-card">
+            <div class="edition-swatch">
+              <svg viewBox="0 0 300 300">
+                <rect width="300" height="300" fill="#120d08" />
+                <rect
+                  width="300"
+                  height="300"
+                  fill="url(#mosaicTile)"
+                  patternTransform="rotate(30)"
+                />
+                <rect
+                  x="90"
+                  y="90"
+                  width="120"
+                  height="120"
+                  fill="none"
+                  stroke="#f3d477"
+                  stroke-width="1.5"
+                  transform="rotate(45 150 150)"
+                />
+              </svg>
+            </div>
+            <div class="edition-info">
+              <span class="num">Model No. 03</span>
+              <h3>Full Autonomy</h3>
+              <p>
+                The system holds executive power directly — the most radical
+                version, and the one that draws the sharpest objections.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ JOIN THE DEBATE ============ -->
+    <section class="acquire" id="debate">
+      <div class="wrap acquire-grid">
+        <div>
+          <p class="eyebrow">Where You Stand</p>
+          <h2 style="margin-top: 20px">
+            The idea is untested.<br />The debate isn't.
+          </h2>
+          <p>
+            No nation currently permits a non-human head of state, and every
+            serious proposal still runs into the same wall .Incorruptibility
+            solves one problem while opening others around accountability,
+        
+          </p>
+          <div class="price-row">
+            <span class="price">0</span
+            ><span class="unit">nations with an AI head of state, so far</span>
+          </div>
+         
+        </div>
+        <div class="acquire-visual">
+          <svg viewBox="0 0 400 440">
+            <rect width="400" height="440" fill="none" />
+            <rect
+              x="10"
+              y="10"
+              width="380"
+              height="420"
+              fill="#1c1510"
+              stroke="url(#goldGrad)"
+              stroke-width="1.4"
+            />
+            <rect
+              x="10"
+              y="10"
+              width="380"
+              height="420"
+              fill="url(#mosaicTile)"
+              opacity="0.35"
+            />
+            <text
+              x="200"
+              y="200"
+              text-anchor="middle"
+              font-family="Cormorant Garamond, serif"
+              font-size="20"
+              fill="#f3d477"
+              letter-spacing="4"
+            >
+              AXIOM
+            </text>
+            <text
+              x="200"
+              y="228"
+              text-anchor="middle"
+              font-family="Cormorant Garamond, serif"
+              font-size="11"
+              fill="#ece1c4"
+              letter-spacing="3"
+            >
+              THE PROPOSAL
+            </text>
+            <text
+              x="200"
+              y="260"
+              text-anchor="middle"
+              font-family="Cormorant Garamond, serif"
+              font-style="italic"
+              font-size="14"
+              fill="#cabb95"
+            >
+              Draft No. 01, unratified
+            </text>
+            <circle
+              cx="200"
+              cy="320"
+              r="26"
+              fill="none"
+              stroke="#d4af37"
+              stroke-width="1.2"
+            />
+            <circle cx="200" cy="320" r="8" fill="url(#goldRadial)" />
+          </svg>
+        </div>
+      </div>
+    </section>
+
+ 
+
+    <script>
+      // nav background on scroll
+      const nav = document.getElementById("siteNav");
+      window.addEventListener("scroll", () => {
+        nav.classList.toggle("scrolled", window.scrollY > 40);
+      });
+
+      // scroll reveal
+      const revealEls = document.querySelectorAll(".note-card, .edition-card");
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("in-view");
+              io.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.2 },
+      );
+      revealEls.forEach((el) => io.observe(el));
+
+      // mobile nav toggle (simple show/hide of links inline)
+      const toggle = document.querySelector(".nav-toggle");
+      const links = document.querySelector(".nav-links");
+      const cta = document.querySelector(".nav-cta");
+      toggle.addEventListener("click", () => {
+        const open = links.style.display === "flex";
+        links.style.display = open ? "none" : "flex";
+        cta.style.display = open ? "none" : "inline-block";
+        links.style.flexDirection = "column";
+        links.style.position = "fixed";
+        links.style.top = "64px";
+        links.style.right = "24px";
+        links.style.background = "#120d08";
+        links.style.border = "1px solid rgba(212,175,55,0.35)";
+        links.style.padding = "20px 26px";
+        links.style.gap = "18px";
+        links.style.zIndex = "200";
+      });
+    </script>
+  </body>
+</html>
