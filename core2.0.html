@@ -254,9 +254,6 @@
         align-items: center;
         width: 100%;
       }
-      .hero-copy {
-        max-width: 640px;
-      }
       .hero-copy .eyebrow {
         margin-bottom: 22px;
       }
@@ -339,7 +336,7 @@
       .hero-bottle {
         position: absolute;
         top: 50%;
-        right: 2%;
+        right: -5%;
         transform: translateY(-50%);
         display: flex;
         align-items: center;
@@ -374,7 +371,7 @@
       .hero-bottle img {
         position: relative;
         z-index: 2;
-        width: min(420px, 34vw);
+        width: min(700px, 60vw);
         filter: drop-shadow(0 22px 34px rgba(0, 0, 0, 0.55));
         animation: floatBottle 7s ease-in-out infinite;
       }
@@ -412,22 +409,7 @@
 
       /* ---------- story ---------- */
       .story {
-        position: relative;
         background: var(--panel);
-      }
-      .story::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: url("bg.png") center/cover no-repeat;
-        opacity: 0.8;
-        z-index: 0;
-        pointer-events: none;
-      }
-
-      .story .wrap {
-        position: relative;
-        z-index: 1;
       }
       .story-grid {
         display: grid;
@@ -1110,16 +1092,13 @@
     <section class="story" id="story">
       <div class="wrap story-grid">
         <div class="story-panel">
-          <img
-            src="doof.png"
-            alt=""
-            style="width: 100%; height: 100%; object-fit: cover"
-          />
+          <bg scr="bg.png">
+           <img src="doof.png" style="width: 100%; height: 100%; object-fit: cover" />
+          
         </div>
         <div>
           <p class="eyebrow">The Premise</p>
-          <br />
-          <h2 style="margin-top: 20px"><br /></h2>
+          <h2 style="margin-top: 20px">A leader with<br />nothing to gain.</h2>
           <p>
             The idea of an incorruptible leader shows up in different forms . An
             AI president is one of them,<br />
@@ -1229,7 +1208,7 @@
       <div class="wrap terroir-grid">
         <div class="terroir-art">
           <img
-            src="r4i.jpg"
+            src="r2i.jpeg"
             alt=""
             style="width: 100%; height: 100%; object-fit: cover"
           />
@@ -1252,15 +1231,13 @@
       <div class="wrap">
         <div class="editions-head">
           <h2>Three ways the idea actually gets proposed.</h2>
-          <p>
-            "Robot president" rarely means the same thing twice. Most serious
-            proposals fall into one of three tiers of authority.
-          </p>
+          <br>          <br>          <br>
+          
         </div>
         <div class="edition-grid">
           <div class="edition-card">
             <div class="edition-swatch">
-              <img src="ame.png" />
+           <img src="ame.png">
             </div>
             <div class="edition-info">
               <span class="num">Model No. 01</span>
@@ -1273,7 +1250,7 @@
           </div>
           <div class="edition-card">
             <div class="edition-swatch">
-              <img src="ameb.png" />
+             <img src="ameb.png">
             </div>
             <div class="edition-info">
               <span class="num">Model No. 02</span>
@@ -1286,7 +1263,7 @@
           </div>
           <div class="edition-card">
             <div class="edition-swatch">
-              <img src="ame.png" />
+              <img src="ame.png">
             </div>
             <div class="edition-info">
               <span class="num">Model No. 03</span>
@@ -1320,11 +1297,10 @@
           </div>
         </div>
         <div class="acquire-visual">
-          <img
-            src="dihpsd.png"
-            style="width: 100%; height: 90%; object-fit: cover"
-          />
+          <img src="dihpsd.png"  style="width: 100%; height: 90%; object-fit: cover" />
+          </svg>
         </div>
+        
       </div>
     </section>
 

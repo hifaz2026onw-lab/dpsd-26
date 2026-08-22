@@ -11,22 +11,22 @@
     />
     <style>
       :root {
-        --void: #01040a;
+        --void: #030408;
         --panel: #000000;
-        --panel-2: #01040a;
-        --gold: #999b9b;
-        --gold-bright: #999b9b;
-        --gold-deep: #999b9b;
-        --gold-line: #999b9b;
-        --cream: #f4ead0;
-        --cream-dim: #d9c9a0;
-        --ink-text: #999b9b;
-        --ink-text-dim: #999b9b;
-        --ink-gold: #999b9b;
-        --wine: #6a1626;
-        --wine-bright: #8f2038;
-        --green: #26312a;
-        --ink: #0a0705;
+        --panel-2: #030408;
+        --gold: #6e7176;
+        --gold-bright: #b7b9bc;
+        --gold-deep: #3d3f43;
+        --gold-line: rgba(110, 113, 118, 0.35);
+        --cream: #e5ded0;
+        --cream-dim: #9c927c;
+        --ink-text: #6e7176;
+        --ink-text-dim: #4a4d52;
+        --ink-gold: #55575b;
+        --wine: #4a1420;
+        --wine-bright: #6e1d30;
+        --green: #1c231e;
+        --ink: #030204;
 
         --f-display: "Montserrat";
         --f-script: "Montserrat";
@@ -228,7 +228,7 @@
         background:
           radial-gradient(
             ellipse 70% 60% at 50% -10%,
-            rgba(138, 106, 32, 0.28),
+            rgba(110, 113, 118, 0.22),
             transparent 60%
           ),
           linear-gradient(
@@ -303,7 +303,7 @@
       .btn-gold:hover {
         background: var(--gold-bright);
         transform: translateY(-2px);
-        box-shadow: 0 12px 26px -12px rgba(212, 175, 55, 0.55);
+        box-shadow: 0 12px 26px -12px rgba(110, 113, 118, 0.55);
       }
       .btn-line {
         border-color: var(--gold-deep);
@@ -311,7 +311,7 @@
       }
       .btn-line:hover {
         border-color: var(--gold-bright);
-        background: rgba(212, 175, 55, 0.08);
+        background: rgba(110, 113, 118, 0.08);
       }
 
       .hero-meta {
@@ -335,12 +335,12 @@
         color: var(--cream-dim);
       }
 
-      /* bottle — floats on the right side of the hero */
+      /* president portrait — hangs from the navbar */
       .hero-bottle {
         position: absolute;
-        top: 50%;
-        right: 2%;
-        transform: translateY(-50%);
+        top: 90px;
+        right: 4%;
+        transform: none;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -349,12 +349,13 @@
 
       .hero-bottle .bottle-glow {
         position: absolute;
-        width: 340px;
-        height: 340px;
+        top: -20px;
+        width: 300px;
+        height: 300px;
         border-radius: 50%;
         background: radial-gradient(
           circle,
-          rgba(212, 175, 55, 0.35),
+          rgba(110, 113, 118, 0.32),
           transparent 70%
         );
         filter: blur(10px);
@@ -374,9 +375,10 @@
       .hero-bottle img {
         position: relative;
         z-index: 2;
-        width: min(420px, 34vw);
+        width: min(360px, 28vw);
         filter: drop-shadow(0 22px 34px rgba(0, 0, 0, 0.55));
         animation: floatBottle 7s ease-in-out infinite;
+        border-top: 1px solid var(--gold-line);
       }
 
       @keyframes floatBottle {
@@ -385,7 +387,7 @@
           transform: translateY(0);
         }
         50% {
-          transform: translateY(-16px);
+          transform: translateY(-12px);
         }
       }
 
@@ -722,7 +724,7 @@
       }
       .acquire-form input:focus {
         outline: none;
-        background: rgba(212, 175, 55, 0.06);
+        background: rgba(110, 113, 118, 0.06);
       }
       .acquire-form button {
         border: none;
@@ -850,7 +852,7 @@
       .hero-meta .num,
       .hero-meta .lbl,
       .eyebrow {
-        text-shadow: 0 2px 20px rgba(10, 7, 5, 0.6);
+        text-shadow: 0 2px 20px rgba(3, 2, 4, 0.6);
       }
       .hero-copy {
         position: relative;
@@ -862,8 +864,8 @@
         inset: -50px -70px;
         background: radial-gradient(
           ellipse at center,
-          rgba(10, 7, 5, 0.4),
-          rgba(10, 7, 5, 0) 72%
+          rgba(3, 2, 4, 0.4),
+          rgba(3, 2, 4, 0) 72%
         );
         z-index: -1;
         pointer-events: none;
@@ -877,7 +879,7 @@
         box-shadow: 0 18px 40px -22px rgba(0, 0, 0, 0.6);
       }
       .edition-card {
-        background: rgba(212, 175, 55, 0.03);
+        background: rgba(110, 113, 118, 0.03);
       }
       .note-card,
       .edition-card {
@@ -964,13 +966,13 @@
       <svg xmlns="http://www.w3.org/2000/svg">
         <defs>
           <linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#f3d477" />
-            <stop offset="45%" stop-color="#d4af37" />
-            <stop offset="100%" stop-color="#8a6a20" />
+            <stop offset="0%" stop-color="#b7b9bc" />
+            <stop offset="45%" stop-color="#6e7176" />
+            <stop offset="100%" stop-color="#3d3f43" />
           </linearGradient>
           <radialGradient id="goldRadial" cx="50%" cy="45%" r="60%">
-            <stop offset="0%" stop-color="#f3d477" />
-            <stop offset="100%" stop-color="#8a6a20" />
+            <stop offset="0%" stop-color="#b7b9bc" />
+            <stop offset="100%" stop-color="#3d3f43" />
           </radialGradient>
 
           <pattern
@@ -981,12 +983,12 @@
             patternTransform="rotate(8)"
           >
             <rect width="120" height="120" fill="none" />
-            <circle cx="20" cy="20" r="7" fill="#d4af37" opacity="0.9" />
-            <circle cx="20" cy="20" r="2.4" fill="#120d08" />
-            <polygon points="70,6 84,32 56,32" fill="#8a6a20" opacity="0.85" />
+            <circle cx="20" cy="20" r="7" fill="#6e7176" opacity="0.9" />
+            <circle cx="20" cy="20" r="2.4" fill="#0a0a0c" />
+            <polygon points="70,6 84,32 56,32" fill="#3d3f43" opacity="0.85" />
             <polygon
               points="100,60 116,90 84,90"
-              fill="#f3d477"
+              fill="#b7b9bc"
               opacity="0.7"
             />
             <circle
@@ -994,17 +996,17 @@
               cy="80"
               r="10"
               fill="none"
-              stroke="#d4af37"
+              stroke="#6e7176"
               stroke-width="2"
               opacity="0.7"
             />
-            <circle cx="60" cy="80" r="4" fill="#d4af37" />
+            <circle cx="60" cy="80" r="4" fill="#6e7176" />
             <rect
               x="0"
               y="95"
               width="16"
               height="16"
-              fill="#6a1626"
+              fill="#4a1420"
               opacity="0.6"
               transform="rotate(45 8 103)"
             />
@@ -1013,7 +1015,7 @@
               y1="0"
               x2="120"
               y2="120"
-              stroke="#d4af37"
+              stroke="#6e7176"
               stroke-width="0.4"
               opacity="0.25"
             />
@@ -1037,7 +1039,7 @@
             <circle cx="20" cy="20" r="4" fill="url(#goldRadial)" />
             <path
               d="M20 4 L20 12 M20 28 L20 36 M4 20 L12 20 M28 20 L36 20"
-              stroke="#d4af37"
+              stroke="#6e7176"
               stroke-width="1"
             />
           </svg>
@@ -1102,7 +1104,7 @@
           stroke="url(#goldGrad)"
           stroke-width="1"
         />
-        <circle cx="600" cy="60" r="5" fill="#d4af37" />
+        <circle cx="600" cy="60" r="5" fill="#6e7176" />
       </svg>
     </div>
 
@@ -1160,7 +1162,7 @@
                 cy="52"
                 r="34"
                 fill="none"
-                stroke="#d4af37"
+                stroke="#6e7176"
                 stroke-width="1"
                 opacity="0.6"
               />
@@ -1208,7 +1210,7 @@
                 cy="52"
                 r="34"
                 fill="none"
-                stroke="#d4af37"
+                stroke="#6e7176"
                 stroke-width="1"
                 opacity="0.6"
               />
@@ -1362,8 +1364,8 @@
         links.style.position = "fixed";
         links.style.top = "64px";
         links.style.right = "24px";
-        links.style.background = "#120d08";
-        links.style.border = "1px solid rgba(212,175,55,0.35)";
+        links.style.background = "#0a0a0c";
+        links.style.border = "1px solid rgba(110,113,118,0.35)";
         links.style.padding = "20px 26px";
         links.style.gap = "18px";
         links.style.zIndex = "200";
