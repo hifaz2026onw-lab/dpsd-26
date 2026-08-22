@@ -6,31 +6,31 @@
     <title>AXIOM — The Case for an Artificial President</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap"
       rel="stylesheet"
     />
     <style>
       :root {
-        --void: #21635f;
-        --panel: #1c1510;
-        --panel-2: #241b13;
-        --gold: #d4af37;
-        --gold-bright: #f3d477;
-        --gold-deep: #a9822f;
-        --gold-line: rgba(212, 175, 55, 0.45);
+        --void: #01040a;
+        --panel: #000000;
+        --panel-2: #01040a;
+        --gold: #999b9b;
+        --gold-bright: #999b9b;
+        --gold-deep: #999b9b;
+        --gold-line: #999b9b;
         --cream: #f4ead0;
         --cream-dim: #d9c9a0;
-        --ink-text: #2c2314;
-        --ink-text-dim: #4a3d26;
-        --ink-gold: #6b5219;
+        --ink-text: #999b9b;
+        --ink-text-dim: #999b9b;
+        --ink-gold: #999b9b;
         --wine: #6a1626;
         --wine-bright: #8f2038;
         --green: #26312a;
         --ink: #0a0705;
 
-        --f-display: "Cormorant Garamond", serif;
-        --f-script: "Cormorant Garamond", serif;
-        --f-body: "Cormorant Garamond", serif;
+        --f-display: "Montserrat";
+        --f-script: "Montserrat";
+        --f-body: "Montserrat";
 
         --wrap: 1180px;
       }
@@ -1070,12 +1070,12 @@
 
         <div class="hero-bottle">
           <div class="bottle-glow"></div>
-          <img src="abcd.jpeg">
+          <img src="abcd.jpeg" />
         </div>
       </div>
     </section>
 
-    
+    <!-- divider -->
     <div class="divider">
       <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
         <path
@@ -1092,43 +1092,9 @@
     <section class="story" id="story">
       <div class="wrap story-grid">
         <div class="story-panel">
-          <svg viewBox="0 0 400 500">
-            <rect width="400" height="500" fill="#1c1510" />
-            <rect
-              width="400"
-              height="500"
-              fill="url(#mosaicTile)"
-              opacity="0.5"
-            />
-            <rect
-              x="20"
-              y="20"
-              width="360"
-              height="460"
-              fill="none"
-              stroke="url(#goldGrad)"
-              stroke-width="1.5"
-            />
-            <circle
-              cx="200"
-              cy="250"
-              r="90"
-              fill="none"
-              stroke="#d4af37"
-              stroke-width="1.2"
-              opacity="0.8"
-            />
-            <circle
-              cx="200"
-              cy="250"
-              r="60"
-              fill="none"
-              stroke="#f3d477"
-              stroke-width="1"
-              opacity="0.6"
-            />
-            <circle cx="200" cy="250" r="14" fill="url(#goldRadial)" />
-          </svg>
+          <bg scr="bg.png">
+           <img src="doof.png" style="width: 100%; height: 100%; object-fit: cover" />
+          
         </div>
         <div>
           <p class="eyebrow">The Premise</p>
@@ -1160,7 +1126,6 @@
         <div class="notes-grid">
           <div class="note-card">
             <svg class="medallion" viewBox="0 0 104 104">
-              
               <circle
                 cx="52"
                 cy="52"
@@ -1178,7 +1143,6 @@
                 stroke-width="1"
                 opacity="0.6"
               />
-             
             </svg>
             <h3>Nothing to Bribe</h3>
             <p>
@@ -1197,7 +1161,7 @@
                 stroke="url(#goldGrad)"
                 stroke-width="1.4"
               />
-              
+
               />
               <circle cx="52" cy="52" r="10" fill="url(#goldRadial)" />
             </svg>
@@ -1210,7 +1174,7 @@
           </div>
           <div class="note-card">
             <svg class="medallion" viewBox="0 0 104 104">
-         <circle
+              <circle
                 cx="52"
                 cy="52"
                 r="50"
@@ -1227,7 +1191,6 @@
                 stroke-width="1"
                 opacity="0.6"
               />
-             
             </svg>
             <h3>A Paper Trail for Everything</h3>
             <p>
@@ -1244,30 +1207,21 @@
     <section class="terroir" id="terroir">
       <div class="wrap terroir-grid">
         <div class="terroir-art">
-          <svg viewBox="0 0 400 400">
-        
-            <path
-              d="M0,300 Q100,240 200,290 T400,270 V400 H0 Z"
-              fill="#0a0705"
-              opacity="0.7"
-            />
-            <path
-              d="M0,320 Q100,270 200,310 T400,300 V400 H0 Z"
-              fill="#120d08"
-            />
-          </svg>
+          <img
+            src="r4i.jpg"
+            alt=""
+            style="width: 100%; height: 100%; object-fit: cover"
+          />
         </div>
         <div>
           <p class="eyebrow">The Risks</p>
           <h2 style="margin-top: 20px">Where the<br />argument breaks down.</h2>
           <p>
             Critics don't dispute that a machine can't be bribed in the
-            traditional sense. They argue the corruption simply moves upstream —
-            to whoever builds, trains, and maintains the system — while raising
-            a separate set of problems entirely.
+            traditional sense. They argue the corruption simply moves to whoever
+            builds, trains, and maintains the system which raises a separate set
+            of problems entirely.
           </p>
-          <ul class="fact-list">
-            <li>
         </div>
       </div>
     </section>
@@ -1277,26 +1231,13 @@
       <div class="wrap">
         <div class="editions-head">
           <h2>Three ways the idea actually gets proposed.</h2>
-          <p>
-            "Robot president" rarely means the same thing twice. Most serious
-            proposals fall into one of three tiers of authority.
-          </p>
+          <br>          <br>          <br>
+          
         </div>
         <div class="edition-grid">
           <div class="edition-card">
             <div class="edition-swatch">
-              <svg viewBox="0 0 300 300">
-                <rect width="300" height="300" fill="#1c1510" />
-                <rect width="300" height="300" fill="url(#mosaicTile)" />
-                <circle
-                  cx="150"
-                  cy="150"
-                  r="70"
-                  fill="none"
-                  stroke="#f3d477"
-                  stroke-width="1.5"
-                />
-              </svg>
+           <img src="ame.png">
             </div>
             <div class="edition-info">
               <span class="num">Model No. 01</span>
@@ -1309,21 +1250,7 @@
           </div>
           <div class="edition-card">
             <div class="edition-swatch">
-              <svg viewBox="0 0 300 300">
-                <rect width="300" height="300" fill="#241b13" />
-                <rect
-                  width="300"
-                  height="300"
-                  fill="url(#mosaicTile)"
-                  patternTransform="rotate(-15)"
-                />
-                <polygon
-                  points="150,60 220,220 80,220"
-                  fill="none"
-                  stroke="#d4af37"
-                  stroke-width="1.5"
-                />
-              </svg>
+             <img src="ameb.png">
             </div>
             <div class="edition-info">
               <span class="num">Model No. 02</span>
@@ -1336,25 +1263,7 @@
           </div>
           <div class="edition-card">
             <div class="edition-swatch">
-              <svg viewBox="0 0 300 300">
-                <rect width="300" height="300" fill="#120d08" />
-                <rect
-                  width="300"
-                  height="300"
-                  fill="url(#mosaicTile)"
-                  patternTransform="rotate(30)"
-                />
-                <rect
-                  x="90"
-                  y="90"
-                  width="120"
-                  height="120"
-                  fill="none"
-                  stroke="#f3d477"
-                  stroke-width="1.5"
-                  transform="rotate(45 150 150)"
-                />
-              </svg>
+              <img src="ame.png">
             </div>
             <div class="edition-info">
               <span class="num">Model No. 03</span>
@@ -1381,82 +1290,18 @@
             No nation currently permits a non-human head of state, and every
             serious proposal still runs into the same wall .Incorruptibility
             solves one problem while opening others around accountability,
-        
           </p>
           <div class="price-row">
             <span class="price">0</span
             ><span class="unit">nations with an AI head of state, so far</span>
           </div>
-         
         </div>
         <div class="acquire-visual">
-          <svg viewBox="0 0 400 440">
-            <rect width="400" height="440" fill="none" />
-            <rect
-              x="10"
-              y="10"
-              width="380"
-              height="420"
-              fill="#1c1510"
-              stroke="url(#goldGrad)"
-              stroke-width="1.4"
-            />
-            <rect
-              x="10"
-              y="10"
-              width="380"
-              height="420"
-              fill="url(#mosaicTile)"
-              opacity="0.35"
-            />
-            <text
-              x="200"
-              y="200"
-              text-anchor="middle"
-              font-family="Cormorant Garamond, serif"
-              font-size="20"
-              fill="#f3d477"
-              letter-spacing="4"
-            >
-              AXIOM
-            </text>
-            <text
-              x="200"
-              y="228"
-              text-anchor="middle"
-              font-family="Cormorant Garamond, serif"
-              font-size="11"
-              fill="#ece1c4"
-              letter-spacing="3"
-            >
-              THE PROPOSAL
-            </text>
-            <text
-              x="200"
-              y="260"
-              text-anchor="middle"
-              font-family="Cormorant Garamond, serif"
-              font-style="italic"
-              font-size="14"
-              fill="#cabb95"
-            >
-              Draft No. 01, unratified
-            </text>
-            <circle
-              cx="200"
-              cy="320"
-              r="26"
-              fill="none"
-              stroke="#d4af37"
-              stroke-width="1.2"
-            />
-            <circle cx="200" cy="320" r="8" fill="url(#goldRadial)" />
+          <img src="dihpsd.png"  style="width: 100%; height: 90%; object-fit: cover" />
           </svg>
         </div>
       </div>
     </section>
-
- 
 
     <script>
       // nav background on scroll
